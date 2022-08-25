@@ -1,15 +1,6 @@
-# schaufel
+# schaufel-compression
 
-TikTok utilities for Dataskop
-
-## Dev setup
-
-We are storing HTML test files with [git lfs](https://git-lfs.github.com/).
-Please set it up.
-
-```
-npm i
-```
+Compression & obfuscation for scraped data
 
 ## Release a new Version
 
