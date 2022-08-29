@@ -118,15 +118,28 @@ const jsonSchema = {
 
 const compressionTable = createCompressionTable(jsonSchema);
 
+function getRandomInt(max): number {
+  return Math.floor(Math.random() * max);
+}
+
 // compress
 const a = (input) => {
   const compressedObject = compressObject(compressionTable, input);
-  return encode(compressedObject);
+  const encoded = encode(compressedObject);
+
+  // slight obfuscation by prepending a random byte
+  const obfArr = new Uint8Array(encoded.length + 1);
+  const x = new Uint8Array(1);
+  x[0] = getRandomInt(404);
+  obfArr.set(x);
+  obfArr.set(encoded, 1);
+  return obfArr;
 };
 
 // decompress
 const b = (input) => {
-  const compressedObject = decode(input);
+  // remove useless first bytes
+  const compressedObject = decode(input.slice(1));
   return decompressObject(compressionTable, compressedObject);
 };
 

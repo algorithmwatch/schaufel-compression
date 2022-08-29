@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { a } from '../src';
+import { a, b } from '../src';
 
 const arr = [
   {
@@ -72,7 +72,11 @@ describe('filter8000 dump from 22-07-2022', () => {
 
     const encoded: Uint8Array = a(object);
 
-    fs.writeFileSync('test.bin', encoded);
-    fs.writeFileSync('test.json', JSON.stringify(object));
+    fs.writeFileSync('data/test.bin', encoded);
+    fs.writeFileSync('data/test.json', JSON.stringify(object));
+
+    const decoded = b(encoded);
+
+    expect(decoded).toStrictEqual(object);
   });
 });
