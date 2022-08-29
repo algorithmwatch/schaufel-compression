@@ -122,8 +122,16 @@ function getRandomInt(max): number {
   return Math.floor(Math.random() * max);
 }
 
+const toBase64 = (rawData) => {
+  return Buffer.from(rawData, 'binary').toString('base64');
+};
+
+const fromBase64 = (b64str) => {
+  return new Uint8Array(Buffer.from(b64str, 'base64'));
+};
+
 // compress
-const a = (input) => {
+const a = (input: unknown): string => {
   const compressedObject = compressObject(compressionTable, input);
   const encoded = encode(compressedObject);
 
@@ -133,13 +141,13 @@ const a = (input) => {
   x[0] = getRandomInt(404);
   obfArr.set(x);
   obfArr.set(encoded, 1);
-  return obfArr;
+  return toBase64(obfArr);
 };
 
 // decompress
-const b = (input) => {
+const b = (input: string): unknown => {
   // remove useless first bytes
-  const compressedObject = decode(input.slice(1));
+  const compressedObject = decode(fromBase64(input).slice(1));
   return decompressObject(compressionTable, compressedObject);
 };
 
