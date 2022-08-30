@@ -60,13 +60,22 @@ const arr = [
       ],
     },
     scrapedAt: 1661272259615,
-    error: null,
+    error: 'test',
   },
 ];
 
-describe('filter8000 dump from 22-07-2022', () => {
-  test('information gets removed', () => {
+describe('test on some data', () => {
+  test('test arr[0]', () => {
     const object = arr[0];
+
+    const encoded = a(object);
+    const decoded = b(encoded);
+
+    expect(decoded).toStrictEqual(object);
+  });
+
+  test('test arr[1]', () => {
+    const object = arr[1];
 
     const encoded = a(object);
     const decoded = b(encoded);

@@ -8,6 +8,7 @@ import {
 
 // https://www.liquid-technologies.com/online-json-to-schema-converter
 
+// the schme is not coorect but it does not seem so important
 const jsonSchema = {
   $schema: 'http://json-schema.org/draft-04/schema#',
   type: 'object',
