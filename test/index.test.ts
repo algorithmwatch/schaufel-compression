@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 import { a, b } from '../src';
 
 const arr = [
@@ -71,10 +69,6 @@ describe('filter8000 dump from 22-07-2022', () => {
     const object = arr[0];
 
     const encoded = a(object);
-
-    fs.writeFileSync('data/test.bin', encoded);
-    fs.writeFileSync('data/test.json', JSON.stringify(object));
-
     const decoded = b(encoded);
 
     expect(decoded).toStrictEqual(object);
