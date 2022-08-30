@@ -70,7 +70,7 @@ describe('filter8000 dump from 22-07-2022', () => {
   test('information gets removed', () => {
     const object = arr[0];
 
-    const encoded: Uint8Array = a(object);
+    const encoded = a(object);
 
     fs.writeFileSync('data/test.bin', encoded);
     fs.writeFileSync('data/test.json', JSON.stringify(object));
